@@ -5,6 +5,7 @@ import { fetchData } from './utils/api';
 import InsightCard from './components/InsightCard';
 import Filters from './components/Filters';
 import Header from './components/Header';
+import ChartsDashboard from './components/ChartsDashboard';
 
 function App() {
   const [data, setData] = useState([])
@@ -32,15 +33,17 @@ function App() {
   
   return (
     <div className="dashboard container my-4">
-      <Header/>
-      <Filters data={data} onFilterChange={handleFilterChange}/>
-        <div className="card-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+      <Header/> 
+          <Filters data={data} onFilterChange={handleFilterChange}/>
+           {/* <div className="card-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
         {filtered.map((item) => (
           <div className="col" key={item._id}>
             <InsightCard item={item} />
           </div>
         ))}
-      </div>
+        </div> */}
+{filtered.length > 0 && <ChartsDashboard data={filtered} />}
+       
     </div>
   );
 }
