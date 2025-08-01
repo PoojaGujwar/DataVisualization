@@ -1,52 +1,81 @@
-import React from 'react'
+import React from "react";
 
-export default function Filters({data, onFilterChange}) {
+export default function Filters({ data, onFilterChange }) {
 
-console.log(data)
+   const getUniqueValues = (key) => {
+    return [...new Set(data.map((item) => item[key]).filter(Boolean))];
+  };
+  console.log(getUniqueValues)
   return (
-    <div>
-        <div className='row'>
-        <div className="col">
-          <select className="form-select" onChange={(e) => onFilterChange("end_year", e.target.value)}>
+      <div className="container">
+        <h5 className="text-bold mt-3">Filters</h5>
+        <div className="mt-5">
+          <select
+            className="form-select "
+            style={{ fontSize: "0.75rem", padding: "0.25rem 0.5rem" }}
+            onChange={(e) => onFilterChange("end_year", e.target.value)}
+          >
             <option value="">End Year</option>
-            {data.map((year,i) => (
-              <option key={i} value={year.end_year}>{year.end_year}</option>
+            {getUniqueValues("end_year").sort().map((year, i) => (
+              <option key={i} value={year}>
+                {year}
+              </option>
             ))}
           </select>
         </div>
-        <div className="col">
-          <select className="form-select" onChange={(e) => onFilterChange("sector", e.target.value)}>
+        <div className="mt-5">
+          <select
+            className="form-select form-select-sm small"
+            onChange={(e) => onFilterChange("sector", e.target.value)}
+          >
             <option value="">Sector</option>
-            {data.map((d,i) => (
-              <option key={i} value={d.sector}>{d.sector}</option>
+            {getUniqueValues("sector").map((sector, i) => (
+              <option key={i} value={sector}>
+                {sector}
+              </option>
             ))}
           </select>
         </div>
-        <div className="col">
-          <select className="form-select" onChange={(e) => onFilterChange("topic", e.target.value)}>
+        <div className="mt-5">
+          <select
+            className="form-select"
+            onChange={(e) => onFilterChange("topic", e.target.value)}
+          >
             <option value="">Topic</option>
-            {data.map((d,i) => (
-              <option key={i} value={d.topic}>{d.topic}</option>
+            {getUniqueValues("topic").map((topic, i) => (
+              <option key={i} value={topic}>
+                {topic}
+              </option>
             ))}
           </select>
         </div>
-         <div className="col">
-          <select className="form-select" onChange={(e) => onFilterChange("region", e.target.value)}>
+        <div className="mt-5">
+          <select
+            className="form-select"
+            onChange={(e) => onFilterChange("region", e.target.value)}
+          >
             <option value="">Region</option>
-            {data.map((d,i) => (
-              <option key={i} value={d.region}>{d.region}</option>
+            {getUniqueValues("region").map((region, i) => (
+              <option key={i} value={region}>
+                {region}
+              </option>
             ))}
           </select>
         </div>
-         <div className="col">
-          <select className="form-select" onChange={(e) => onFilterChange("country", e.target.value)}>
+        <div className="mt-5">
+          <select
+            className="form-select"
+            onChange={(e) => onFilterChange("country", e.target.value)}
+          >
             <option value="">Country</option>
-            {data.map((d,i) => (
-              <option key={i} value={d.country}>{d.country}</option>
+            {getUniqueValues("country").map((country, i) => (
+              <option key={i} value={country}>
+                {country}
+              </option>
             ))}
           </select>
         </div>
-        </div>
-    </div>
-  )
+      </div>
+
+  );
 }

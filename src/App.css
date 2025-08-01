@@ -37,8 +37,8 @@
   }
 }
 .dashboard {
-  padding: 20px;
   font-family: Arial, sans-serif;
+  margin-top: 20px;
 }
 
 .card-container {

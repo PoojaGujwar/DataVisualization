@@ -1,0 +1,19 @@
+char-container{
+    overflow-x: auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+chart-container div{
+    min-width: '600px';
+    height : '300px' ;
+    align-self: center
+}
+div-container{
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+/* col-md-5 col-sm-5 mt-5 mx-3 d-flex align-items-center justify-content-center shadow */
